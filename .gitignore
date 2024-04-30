@@ -44,3 +44,24 @@ buildNumber.properties
 .mvn/timing.properties
 # https://github.com/takari/maven-wrapper#usage-without-binary-jar
 .mvn/wrapper/maven-wrapper.jar
+
+.allure
+.gradle
+schema
+build
+/*/allure-results/
+out
+.gradletasknamecache
+
+#IDEA Files
+.idea/*
+!.idea/vcs.xml
+!.idea/icon.png
+
+#Eclipse files
+*.settings
+*.classpath
+*.project
+*.pydevproject
+
+allure-results
