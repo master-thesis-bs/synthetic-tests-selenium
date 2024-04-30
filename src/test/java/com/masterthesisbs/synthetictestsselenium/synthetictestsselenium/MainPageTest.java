@@ -1,5 +1,6 @@
 package com.masterthesisbs.synthetictestsselenium.synthetictestsselenium;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -17,9 +18,10 @@ public class MainPageTest {
 
     @BeforeMethod
     public void setUp() {
+        WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
         options.addArguments("--no-sandbox");
+        options.addArguments("--remote-allow-origins=*");
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--headless");
         driver = new ChromeDriver(options);
@@ -35,7 +37,7 @@ public class MainPageTest {
     }
 
     @Test
-    public void search() {
+    public void checkTitle() {
         var titleText = mainPage.getTitleText();
 
         assertThat(titleText)
