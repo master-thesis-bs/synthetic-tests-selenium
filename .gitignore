@@ -64,4 +64,5 @@ out
 *.project
 *.pydevproject
 
-allure-results
+allure-results/*
+!allure-results/.gitkeep
