@@ -1,6 +1,8 @@
 package com.masterthesisbs.synthetictestsselenium.synthetictestsselenium;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.qameta.allure.Description;
+import io.qameta.allure.testng.Tag;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -37,6 +39,7 @@ public class MainPageTest {
     }
 
     @Test
+    @Description("Check title")
     public void checkTitle() {
         var titleText = mainPage.getTitleText();
 
