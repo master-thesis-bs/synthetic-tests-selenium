@@ -3,7 +3,7 @@ name: Test
 on: workflow_dispatch
 
 jobs:
-  build:
+  test_1:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.1.4
@@ -13,7 +13,5 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: maven
-      - name: Build with Maven
-        run: mvn -B package --file pom.xml
       - name: Test with Maven
         run: mvn clean test
