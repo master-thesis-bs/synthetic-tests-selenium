@@ -63,6 +63,3 @@ out
 *.classpath
 *.project
 *.pydevproject
-
-allure-results/*
-!allure-results/.gitkeep
