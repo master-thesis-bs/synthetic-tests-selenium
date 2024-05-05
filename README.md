@@ -1,6 +1,6 @@
 | Github action  | Description |
 | ------------- | ------------- |
-| Github page build  | |
-| Deployment triggered tests  | 
-| Scheduled tests  | |
-| Manually triggered tests  | |
+| Github page build  | [![pages-build-deployment](https://github.com/master-thesis-bs/synthetic-tests-selenium/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/master-thesis-bs/synthetic-tests-selenium/actions/workflows/pages/pages-build-deployment) |
+| Deployment triggered tests | [![Deployment triggered tests](https://github.com/master-thesis-bs/synthetic-tests-selenium/actions/workflows/deployment-triggered-tests.yml/badge.svg)](https://github.com/master-thesis-bs/synthetic-tests-selenium/actions/workflows/deployment-triggered-tests.yml) | 
+| Scheduled tests  | [![Scheduled tests (5 minutes)](https://github.com/master-thesis-bs/synthetic-tests-selenium/actions/workflows/scheduled-tests.yml/badge.svg)](https://github.com/master-thesis-bs/synthetic-tests-selenium/actions/workflows/scheduled-tests.yml) |
+| Manually triggered tests  | [![Manually triggered tests](https://github.com/master-thesis-bs/synthetic-tests-selenium/actions/workflows/manually-triggered-tests.yml/badge.svg)](https://github.com/master-thesis-bs/synthetic-tests-selenium/actions/workflows/manually-triggered-tests.yml) |
