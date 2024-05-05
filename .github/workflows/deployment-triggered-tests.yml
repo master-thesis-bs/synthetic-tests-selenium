@@ -1,9 +1,13 @@
-name: Test
+name: Deployment triggered tests
 
-on: workflow_dispatch
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
-  test_1:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.1.4
@@ -40,3 +44,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: allure-history
+
