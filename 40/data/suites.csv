@@ -1,0 +1,2 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Sat Jun 01 19:22:42 GMT 2024","Sat Jun 01 19:22:42 GMT 2024","287","Surefire suite","Surefire test","com.masterthesisbs.synthetictestsselenium.synthetictestsselenium.MainPageTest","com.masterthesisbs.synthetictestsselenium.synthetictestsselenium.MainPageTest","checkTitle","checkTitle","Check title"
