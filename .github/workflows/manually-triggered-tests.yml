@@ -50,16 +50,65 @@ jobs:
           # For posting a rich message using Block Kit
           payload: |
             {
-              "text": "GitHub Action build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
-              "blocks": [
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "GitHub Action build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
-                  }
-                }
-              ]
+            	"blocks": [
+            		{
+            			"type": "section",
+            			"text": {
+            				"type": "mrkdwn",
+            				"text": "*Selenium Synthetic Tests Results*"
+            			}
+            		},
+            		{
+            			"type": "divider"
+            		},
+            		{
+            			"type": "section",
+            			"text": {
+            				"type": "mrkdwn",
+            				"text": "*Results:*       9/10 Passed (90%)"
+            			}
+            		},
+            		{
+            			"type": "section",
+            			"text": {
+            				"type": "mrkdwn",
+            				"text": "*Duration:*    5:42"
+            			}
+            		},
+            		{
+            			"type": "divider"
+            		},
+            		{
+            			"type": "actions",
+            			"elements": [
+            				{
+            					"type": "button",
+            					"text": {
+            						"type": "plain_text",
+            						"text": "Go to Test Results",
+            						"emoji": true
+            					},
+            					"value": "click_me_123",
+            					"action_id": "actionId-0"
+            				}
+            			]
+            		},
+            		{
+            			"type": "actions",
+            			"elements": [
+            				{
+            					"type": "button",
+            					"text": {
+            						"type": "plain_text",
+            						"text": "Go to Github Action",
+            						"emoji": true
+            					},
+            					"value": "click_me_123",
+            					"action_id": "actionId-0"
+            				}
+            			]
+            		}
+            	]
             }
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
