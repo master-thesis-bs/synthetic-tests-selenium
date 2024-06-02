@@ -17,6 +17,23 @@ jobs:
       - name: Test with Maven
         run: mvn clean test
 
+      - name: Parse Test Results
+        id: parse_results
+        run: |
+          TEST_RESULT_FILE=$(ls target/surefire-reports/TEST-*.xml | head -n 1)
+          TOTAL_TESTS=$(xmllint --xpath 'string(/testsuite/@tests)' $TEST_RESULT_FILE)
+          FAILURES=$(xmllint --xpath 'string(/testsuite/@failures)' $TEST_RESULT_FILE)
+          SKIPPED=$(xmllint --xpath 'string(/testsuite/@skipped)' $TEST_RESULT_FILE)
+          ERRORS=$(xmllint --xpath 'string(/testsuite/@errors)' $TEST_RESULT_FILE)
+          PASSED=$((TOTAL_TESTS - FAILURES - SKIPPED - ERRORS))
+          DURATION=$(xmllint --xpath 'string(/testsuite/@time)' $TEST_RESULT_FILE)
+          echo "total=$TOTAL_TESTS" >> $GITHUB_ENV
+          echo "passed=$PASSED" >> $GITHUB_ENV
+          echo "failures=$FAILURES" >> $GITHUB_ENV
+          echo "skipped=$SKIPPED" >> $GITHUB_ENV
+          echo "errors=$ERRORS" >> $GITHUB_ENV
+          echo "duration=$DURATION" >> $GITHUB_ENV
+
       - name: Load test report history
         uses: actions/checkout@v4.1.4
         if: always()
@@ -48,7 +65,6 @@ jobs:
         uses: slackapi/slack-github-action@v1.26.0
         with:
           channel-id: 'C07222GE4RY'
-          # For posting a rich message using Block Kit
           payload: |
             {
               "blocks": [
@@ -66,14 +82,14 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "*Results:*       9/10 Passed (90%)"
+                    "text": "*Results:*       ${{ env.passed }}/ ${{ env.total }} Passed ( $((100 * env.passed / env.total))% )"
                   }
                 },
                 {
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "*Duration:*    5:42"
+                    "text": "*Duration:*    ${{ env.duration }}"
                   }
                 },
                 {
@@ -83,14 +99,14 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "<https://google.com|Go to Test Results>"
+                    "text": "<https://your-test-report-url|Go to Test Results>"
                   }
                 },
                 {
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "<https://google.com|Go to Github Action>"
+                    "text": "<https://your-github-action-url|Go to Github Action>"
                   }
                 }
               ]
