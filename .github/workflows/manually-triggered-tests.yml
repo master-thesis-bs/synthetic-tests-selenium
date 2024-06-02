@@ -30,12 +30,14 @@ jobs:
           ERRORS=$(xmllint --xpath 'string(/testsuite/@errors)' $TEST_RESULT_FILE)
           PASSED=$((TOTAL_TESTS - FAILURES - SKIPPED - ERRORS))
           DURATION=$(xmllint --xpath 'string(/testsuite/@time)' $TEST_RESULT_FILE)
+          PERCENTAGE=$((100 * PASSED / TOTAL_TESTS))
           echo "total=$TOTAL_TESTS" >> $GITHUB_ENV
           echo "passed=$PASSED" >> $GITHUB_ENV
           echo "failures=$FAILURES" >> $GITHUB_ENV
           echo "skipped=$SKIPPED" >> $GITHUB_ENV
           echo "errors=$ERRORS" >> $GITHUB_ENV
           echo "duration=$DURATION" >> $GITHUB_ENV
+          echo "percentage=$PERCENTAGE" >> $GITHUB_ENV
 
       - name: Load test report history
         uses: actions/checkout@v4.1.4
@@ -85,7 +87,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "*Results:*       ${{ env.passed }}/ ${{ env.total }} Passed ( $((100 * env.passed / env.total))% )"
+                    "text": "*Results:*       ${{ env.passed }}/ ${{ env.total }} Passed ( ${{ env.percentage }}% )"
                   }
                 },
                 {
