@@ -104,14 +104,14 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|Go to Test Results>"
+                    "text": "<https://your-test-report-url|Go to Test Results>"
                   }
                 },
                 {
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "<https://your-github-action-url|Go to Github Action>"
+                    "text": "<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|Go to Github Action>"
                   }
                 }
               ]
