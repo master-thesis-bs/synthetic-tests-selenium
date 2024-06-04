@@ -104,7 +104,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "<https://your-test-report-url|Go to Test Results>"
+                    "text": "<https://master-thesis-bs.github.io/synthetic-tests-selenium|Go to Test Results>"
                   }
                 },
                 {
