@@ -104,7 +104,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "<https://your-test-report-url|Go to Test Results>"
+                    "text": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|Go to Test Results>"
                   }
                 },
                 {
