@@ -37,6 +37,11 @@ public class HomePage extends AbstractPage {
         return new HomePage(driver);
     }
 
+    public ProfilePage clickProfileButton() {
+        driver.findElement(profileButtonLocator).click();
+        return new ProfilePage(driver);
+    }
+
     public boolean isLogoutButtonPresent() {
         return isElementPresent(driver, logoutButtonLocator);
     }

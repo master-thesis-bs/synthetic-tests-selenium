@@ -6,19 +6,19 @@ import org.openqa.selenium.support.FindBy;
 
 public class RegistrationPage extends AbstractPage {
 
-    @FindBy(xpath = "")
+    @FindBy(xpath = "//input[@id='name']")
     private WebElement nameInput;
 
-    @FindBy(xpath = "")
+    @FindBy(xpath = "//input[@id='email']")
     private WebElement emailInput;
 
-    @FindBy(xpath = "")
+    @FindBy(xpath = "//input[@id='password']")
     private WebElement passwordInput;
 
-    @FindBy(xpath = "")
+    @FindBy(xpath = "//input[@id='password_confirmation']")
     private WebElement passwordConfirmationInput;
 
-    @FindBy(xpath = "")
+    @FindBy(xpath = "//button")
     private WebElement submitRegistrationFormButton;
 
     public RegistrationPage(WebDriver driver) {
@@ -41,7 +41,8 @@ public class RegistrationPage extends AbstractPage {
         passwordConfirmationInput.sendKeys(passwordConfirmation);
     }
 
-    public void clickSubmitRegistrationFormButton() {
+    public HomePage clickSubmitRegistrationFormButton() {
         submitRegistrationFormButton.click();
+        return new HomePage(driver);
     }
 }
