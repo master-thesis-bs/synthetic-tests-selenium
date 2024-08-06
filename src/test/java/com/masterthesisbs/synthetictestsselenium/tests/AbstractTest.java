@@ -19,11 +19,12 @@ public abstract class AbstractTest {
         options.addArguments("--no-sandbox");
         options.addArguments("--remote-allow-origins=*");
         options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--headless");
+        options.addArguments("--disable-search-engine-choice-screen");
+//        options.addArguments("--headless");
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.get("https://master-thesis-bs.click/");
+        driver.get("https://auth-nextjs-green.vercel.app/");
     }
 
     @AfterMethod

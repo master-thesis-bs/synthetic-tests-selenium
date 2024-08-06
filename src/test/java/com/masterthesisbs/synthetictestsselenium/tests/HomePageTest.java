@@ -16,13 +16,8 @@ public class HomePageTest extends AbstractTest {
         homePage = new HomePage(driver);
     }
 
-    @Test
-    @Description("Check title")
-    public void checkHomePage() {
-        var titleText = homePage.getTitleText();
-
-        assertThat(titleText)
-                .describedAs("Title text is correct")
-                .isEqualTo("Home");
-    }
+//    @Test
+//    @Description("Check title")
+//    public void checkHomePage() {
+//    }
 }
