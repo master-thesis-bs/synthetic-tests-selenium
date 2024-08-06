@@ -2,12 +2,11 @@ package com.masterthesisbs.synthetictestsselenium.tests;
 
 import com.masterthesisbs.synthetictestsselenium.pages.HomePage;
 import io.qameta.allure.Description;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-public class HomePageTest extends AbstractTest {
+public class HealthCheckTest extends AbstractTest {
 
     private HomePage homePage;
 
@@ -16,8 +15,14 @@ public class HomePageTest extends AbstractTest {
         homePage = new HomePage(driver);
     }
 
-//    @Test
-//    @Description("Check title")
-//    public void checkHomePage() {
-//    }
+    @AfterMethod
+    public void tearDown() {
+        driver.quit();
+    }
+
+    @Test
+    @Description("Check home page title")
+    public void checkHomePage() {
+        homePage.assertThatPageIsDisplayedCorrectly();
+    }
 }
