@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class ProtectedPage extends AbstractPage {
 
     @FindBy(xpath = "//*[@data-aid='protected-page-title']")
@@ -56,5 +58,24 @@ public class ProtectedPage extends AbstractPage {
         return new LoginPage(driver);
     }
 
-    //todo check if email in welcome message is displayed as expected (value from login)
+    public void assertThatPageIsDisplayedCorrectly(String emailText) {
+        assertThat(this.isTitleDisplayed())
+                .describedAs("Protected page title is displayed")
+                .isTrue();
+        assertThat(this.isSubtitleDisplayed())
+                .describedAs("Protected page subtitle is displayed")
+                .isTrue();
+        assertThat(this.isDeleteAccountButtonDisplayed())
+                .describedAs("Delete account button is displayed")
+                .isTrue();
+        assertThat(this.isSignOutButtonDisplayed())
+                .describedAs("Sign out button is displayed")
+                .isTrue();
+        assertThat(this.getProtectedPageTitle())
+                .describedAs("Protected page title is correct")
+                .isEqualTo("Welcome");
+        assertThat(this.getProtectedPageSubtitle())
+                .describedAs("Protected page subtitle is correct")
+                .isEqualTo("You are logged in as " + emailText);
+    }
 }

@@ -24,79 +24,20 @@ public class LoginTests extends AbstractTest {
         final var emailText = "admin@gmail.com";
         final var passwordText = "Zaq12wsx";
 
-        assertThatHomePageIsDisplayedCorrectly(homePage);
+        homePage.assertThatPageIsDisplayedCorrectly();
 
         var loginPage = homePage.clickLoginPageButton();
 
-        assertThatLoginPageIsDisplayedCorrectly(loginPage);
+        loginPage.assertThatPageIsDisplayedCorrectly();
 
         loginPage.enterEmail(emailText);
         loginPage.enterPassword(passwordText);
         final var protectedPage = loginPage.clickSubmitLoginFormButton();
 
-        assertThatProtectedPageIsDisplayedCorrectly(protectedPage, emailText);
+        protectedPage.assertThatPageIsDisplayedCorrectly(emailText);
 
         loginPage = protectedPage.clickSignOutButton();
 
-        assertThatLoginPageIsDisplayedCorrectly(loginPage);
-    }
-
-    private void assertThatLoginPageIsDisplayedCorrectly(LoginPage loginPage) {
-        assertThat(loginPage.isLoginPageTitleDisplayed())
-                .describedAs("Login page title is displayed")
-                .isTrue();
-        assertThat(loginPage.isLoginPageSubtitleDisplayed())
-                .describedAs("Login page subtitle is displayed")
-                .isTrue();
-        assertThat(loginPage.isEmailInputDisplayed())
-                .describedAs("Login page email input is displayed")
-                .isTrue();
-        assertThat(loginPage.isPasswordInputDisplayed())
-                .describedAs("Login page password input is displayed")
-                .isTrue();
-        assertThat(loginPage.isSubmitLoginFormButtonDisplayed())
-                .describedAs("Submit login form is displayed")
-                .isTrue();
-        assertThat(loginPage.isHomePageLinkDisplayed())
-                .describedAs("Home page link is displayed")
-                .isTrue();
-        assertThat(loginPage.isRegistrationPageLinkDisplayed())
-                .describedAs("Registration page link is displayed")
-                .isTrue();
-    }
-
-    private void assertThatProtectedPageIsDisplayedCorrectly(ProtectedPage protectedPage, String emailText) {
-        assertThat(protectedPage.isTitleDisplayed())
-                .describedAs("Protected page title is displayed")
-                .isTrue();
-        assertThat(protectedPage.isSubtitleDisplayed())
-                .describedAs("Protected page subtitle is displayed")
-                .isTrue();
-        assertThat(protectedPage.isDeleteAccountButtonDisplayed())
-                .describedAs("Delete account button is displayed")
-                .isTrue();
-        assertThat(protectedPage.isSignOutButtonDisplayed())
-                .describedAs("Sign out button is displayed")
-                .isTrue();
-        assertThat(protectedPage.getProtectedPageTitle())
-                .describedAs("Protected page title is correct")
-                .isEqualTo("Welcome");
-        assertThat(protectedPage.getProtectedPageSubtitle())
-                .describedAs("Protected page subtitle is correct")
-                .isEqualTo("You are logged in as " + emailText);
-    }
-
-    private void assertThatHomePageIsDisplayedCorrectly(HomePage homePage) {
-        assertThat(homePage.isHomePageTitleDisplayed())
-                .describedAs("Home page title is displayed")
-                .isTrue();
-
-        assertThat(homePage.getHomePageTitleText())
-                .describedAs("Home page title is displayed")
-                .isEqualTo("Login or sign up to proceed");
-
-        assertThat(homePage.isLoginButtonDisplayed())
-                .describedAs("Login button is displayed")
-                .isTrue();
+        loginPage.assertThatPageIsDisplayedCorrectly();
     }
 }

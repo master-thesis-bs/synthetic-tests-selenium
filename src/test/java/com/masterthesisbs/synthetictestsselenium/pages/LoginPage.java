@@ -3,6 +3,9 @@ package com.masterthesisbs.synthetictestsselenium.pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
 //todo rename to ProtectedPage
 public class LoginPage extends AbstractPage {
 
@@ -82,7 +85,27 @@ public class LoginPage extends AbstractPage {
         return registrationPageLink.isDisplayed();
     }
 
-    public void assertLoginPageTitleDisplayedCorrectly() {
-
+    public void assertThatPageIsDisplayedCorrectly() {
+        assertThat(this.isLoginPageTitleDisplayed())
+                .describedAs("Login page title is displayed")
+                .isTrue();
+        assertThat(this.isLoginPageSubtitleDisplayed())
+                .describedAs("Login page subtitle is displayed")
+                .isTrue();
+        assertThat(this.isEmailInputDisplayed())
+                .describedAs("Login page email input is displayed")
+                .isTrue();
+        assertThat(this.isPasswordInputDisplayed())
+                .describedAs("Login page password input is displayed")
+                .isTrue();
+        assertThat(this.isSubmitLoginFormButtonDisplayed())
+                .describedAs("Submit login form is displayed")
+                .isTrue();
+        assertThat(this.isHomePageLinkDisplayed())
+                .describedAs("Home page link is displayed")
+                .isTrue();
+        assertThat(this.isRegistrationPageLinkDisplayed())
+                .describedAs("Registration page link is displayed")
+                .isTrue();
     }
 }
