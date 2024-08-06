@@ -6,8 +6,6 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 public class RegistrationTest extends AbstractTest {
 
     private HomePage homePage;
@@ -25,8 +23,34 @@ public class RegistrationTest extends AbstractTest {
     @Test
     @Description("Check registration")
     public void checkRegistration() {
-        var userName = "temp.user";
-        var email = "temp.user@gmail.com";
-        var password = "Zaq12wsx";
+        //todo add faker
+        final var emailText = "temp.user@gmail.com";
+        final var passwordText = "Zaq12wsx";
+
+        homePage.assertThatPageIsDisplayedCorrectly();
+
+        var loginPage = homePage.clickLoginPageButton();
+
+        loginPage.assertThatPageIsDisplayedCorrectly();
+
+        var registrationPage = loginPage.clickRegistrationPageLink();
+
+        registrationPage.assertThatPageIsDisplayedCorrectly();
+
+        registrationPage.enterEmail(emailText);
+        registrationPage.enterPassword(passwordText);
+        loginPage = registrationPage.clickSubmitRegistrationFormButton();
+
+        loginPage.assertThatPageIsDisplayedCorrectly();
+
+        loginPage.enterEmail(emailText);
+        loginPage.enterPassword(passwordText);
+        final var protectedPage = loginPage.clickSubmitLoginFormButton();
+
+        protectedPage.assertThatPageIsDisplayedCorrectly(emailText);
+
+        loginPage = protectedPage.clickDeleteAccountButton();
+
+        loginPage.assertThatPageIsDisplayedCorrectly();
     }
 }

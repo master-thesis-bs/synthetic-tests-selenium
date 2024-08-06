@@ -6,7 +6,6 @@ import org.openqa.selenium.support.FindBy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-//todo rename to ProtectedPage
 public class LoginPage extends AbstractPage {
 
     @FindBy(xpath = "//*[@data-aid='login-page-title']")
