@@ -1,5 +1,6 @@
 package com.masterthesisbs.synthetictestsselenium.tests;
 
+import com.github.javafaker.Faker;
 import com.masterthesisbs.synthetictestsselenium.pages.HomePage;
 import io.qameta.allure.Description;
 import org.testng.annotations.AfterMethod;
@@ -23,8 +24,7 @@ public class RegistrationTest extends AbstractTest {
     @Test
     @Description("Check registration")
     public void checkRegistration() {
-        //todo add faker
-        final var emailText = "temp.user@gmail.com";
+        final var emailText = new Faker().internet().emailAddress();
         final var passwordText = "Zaq12wsx";
 
         homePage.assertThatPageIsDisplayedCorrectly();
