@@ -1,1 +1,0 @@
-{"a54d9e211dc3ff7a629cbba1526fa2ec":{"statistic":{"failed":0,"broken":0,"skipped":0,"passed":1,"unknown":0,"total":1},"items":[{"uid":"c5f9833ae6a36ab0","reportUrl":"https://master-thesis-bs.github.io/synthetic-tests-selenium/15//#testresult/c5f9833ae6a36ab0","status":"passed","time":{"start":1717520492125,"stop":1717520492445,"duration":320}}]}}
