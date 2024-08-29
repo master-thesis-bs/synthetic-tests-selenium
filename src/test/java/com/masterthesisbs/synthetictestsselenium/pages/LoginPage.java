@@ -46,11 +46,6 @@ public class LoginPage extends AbstractPage {
         return new ProtectedPage(driver);
     }
 
-    public RegistrationPage clickHomePageLink() {
-        homePageLink.click();
-        return new RegistrationPage(driver);
-    }
-
     public RegistrationPage clickRegistrationPageLink() {
         registrationPageLink.click();
         return new RegistrationPage(driver);

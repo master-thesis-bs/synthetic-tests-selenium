@@ -24,7 +24,7 @@ public abstract class AbstractTest {
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.get("https://auth-nextjs-green.vercel.app/");
+        driver.get("http://23.94.44.206:3000/");
     }
 
     @AfterMethod
